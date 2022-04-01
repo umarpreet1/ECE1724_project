@@ -1,0 +1,26 @@
+syntax = "proto2";
+
+package dataserver;
+
+message write_request{
+  required string key = 1;
+  required string value = 2;
+}
+
+message read_request{
+  required string key = 1;
+}
+
+message response_read{
+  required string value = 1;
+}
+
+message response{
+  required string status = 1;
+}
+
+service data_server{
+  rpc read(read_request) returns (response_read);
+  rpc write_data(write_request) returns (response);
+  rpc update_data(write_request) returns (response);
+}

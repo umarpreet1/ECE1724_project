@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Read or write a key</title>
+</head>
+<body>
+<h1>Write a key-value </h1>
+<form action="{{url_for('write')}}" method="post">
+    <label for="key">Key:</label>
+    <input type="text" id="key" name="key">
+    <label for="value">Value:</label>
+    <input type="text" id="value" name="value">
+    <input type="submit" value="Write">
+</form>
+{% if status %}
+{{ Entry is successful }}
+{% endif %}
+
+<h1>Read a key-value</h1>
+<form action="{{url_for('read')}}" method="post">
+    <label for="key_read">Key:</label>
+    <input type="text" id="key_read" name="key_read">
+    <input type="submit" value="Write">
+</form>
+{% if val %}
+Value : {{ val }}
+{% endif %}
+</body>
+</html>

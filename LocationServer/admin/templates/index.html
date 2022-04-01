@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Config</title>
+</head>
+<body>
+<h1>Data Servers</h1>
+<table border="1px">
+    <tr><td>Port</td>
+        <td>Id</td>
+    </tr>
+    {% for k in dataservers_info.keys() %}
+    <tr><td>{{ dataservers_info[k] }}</td>
+        <td>{{ k }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+<form action="{{url_for('new_ds')}}" method="post">
+    <label for="port">Port Number</label>
+    <input type="number" id="port" name="port" >
+    <label for="id">Id</label>
+    <input type="number" id="id" name="id">
+    <input type="submit" id="button" value="ADD">
+</form>
+<h1>Location Servers</h1>
+<table border="1px">
+    <tr><td>Port</td>
+        <td>Id</td>
+    </tr>
+    {% for k in locationservers_info.keys() %}
+    <tr><td>{{ locationservers_info[k] }}</td>
+        <td>{{ k }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+<form action="{{url_for('new_ls')}}" method="post">
+    <label for="port_ls">Port Number</label>
+    <input type="number" id="port_ls" name="port_ls" >
+    <label for="id_ls">Id</label>
+    <input type="number" id="id_ls" name="id_ls">
+    <input type="submit" id="button_ls" value="ADD">
+</form>
+<a href="{{url_for('test_init')}}">Test Initialization</a>
+</body>
+</html>

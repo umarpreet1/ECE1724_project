@@ -1,0 +1,42 @@
+syntax = "proto2";
+
+package communication;
+
+message lock_request{
+  required string request_id = 3;
+  required string key = 2;
+}
+
+message lock_response{
+  required string request_id = 3;
+  required string status = 1;
+}
+
+message write_request{
+  required string request_id = 3;
+  required string key = 2;
+  required string value = 1;
+}
+
+message write_response{
+  required string request_id = 3;
+  required string status = 1;
+}
+
+message read_request{
+  required string request_id = 1;
+  required string key = 2;
+}
+
+message read_response{
+  required string request_id = 1;
+  required string status = 3;
+  required string value = 2;
+}
+
+service communicator{
+  rpc request_lock(lock_request) returns (lock_response);
+  rpc write(write_request) returns (write_response);
+  rpc read(read_request) returns (read_response);
+}
+

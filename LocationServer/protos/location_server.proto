@@ -1,0 +1,27 @@
+syntax = "proto2";
+
+package locationserver;
+
+message read_request{
+  required string key = 1;
+}
+
+message write_request{
+  required string key = 1;
+  required string value = 2;
+  required string prefix = 3;
+}
+
+message read_response{
+  required string value = 1;
+}
+
+message write_response{
+  required string status = 1;
+}
+
+service location_server{
+  rpc read(read_request) returns (read_response);
+  rpc write(write_request) returns (write_response);
+  rpc update(write_request) returns (write_response);
+}
